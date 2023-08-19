@@ -1,0 +1,105 @@
+@media (orientation: portrait) {
+  .calculator {
+    --width: 100vw;
+  }
+}
+
+@media (orientation: landscape) {
+  .calculator {
+    --width: min(100vh, 360px);
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.calculator {
+  --size: calc(var(--width) * 0.2);
+  --gap: calc(var(--width) * 0.04);
+  --small: calc(var(--width) * 0.06);
+  --large: calc(var(--width) * 0.08);
+  box-sizing: border-box;
+  width: var(--width);
+  padding: var(--gap);
+  text-align: right;
+}
+
+.line {
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: var(--gap);
+}
+
+.res {
+  margin-bottom: var(--gap);
+}
+
+.res::before {
+  content: "= ";
+}
+
+.main {
+  font-size: var(--large);
+  /*font-weight: bold;*/
+  transition: all 0.2s;
+}
+
+.extra {
+  color: #909090;
+  font-size: var(--small);
+  transition: all 0.2s;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: var(--size) var(--size) var(--size) var(--size);
+  grid-gap: var(--gap);
+  user-select: none;
+}
+
+.button {
+  position: relative;
+  border-radius: var(--gap);
+  font-weight: bold;
+  text-align: center;
+  line-height: var(--size);
+  cursor: pointer;
+  overflow: hidden;
+  font-size: var(--small);
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: all 0.1s;
+}
+
+.button:active::after {
+  opacity: 1;
+}
+
+.button.num {
+  color: rgba(0, 0, 0, 0.8);
+  background-color: #f5f5f5;
+}
+
+.button.op {
+  color: #fe6d2c;
+  background-color: #f5f5f5;
+}
+
+.button.confirm {
+  color: #ffffff;
+  background-color: #fe6d2c;
+}
