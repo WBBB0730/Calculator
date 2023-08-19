@@ -26,10 +26,12 @@ export default function App() {
         let tempLine = line
         if (showResult) {
             if (key !== '←') {
-                if (Math.abs(result) > 999999999999999)
+                if ('+-×÷'.includes(key)) {
+                    if (Math.abs(result) > 999999999999999)
+                        return
+                    tempLine = result
+                } else
                     tempLine = '0'
-                else
-                    tempLine = '+-×÷'.includes(key) ? result || '0' : '0'
             }
             setShowResult(false)
         }
